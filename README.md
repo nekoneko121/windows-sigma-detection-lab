@@ -18,6 +18,10 @@ It focuses on understanding attacker behavior and translating it into practical 
 - Sigma rules for:
   - Suspicious PowerShell execution
   - Abnormal process creation patterns
+  - `suspicious_powershell_execution.yml`  
+  Baseline detection for PowerShell execution using process creation logs (Event ID 4688).
+  This rule is intended as a starting point for identifying suspicious scripting activity.
+
 
 ## How to Use
 1. Collect Windows Event Logs from a test system
@@ -31,3 +35,15 @@ making it more resilient against simple evasion techniques.
 ## Limitations
 - False positives may occur in administrative or scripting-heavy environments
 - Detection accuracy depends on log configuration and event coverage
+
+## Improvement Ideas
+- Add command-line analysis (e.g. EncodedCommand)
+- Reduce false positives by filtering known administrative scripts
+- Enhance detection using Sysmon Event ID 1 if available
+
+## What I Learned
+- Windows Event ID 4688 records process creation events
+- PowerShell is commonly abused by attackers for execution
+- Simple detections can serve as a baseline for further improvement
+
+
